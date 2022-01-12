@@ -1,0 +1,43 @@
+services:
+  chopping.api:
+    build:
+      context: C:\Projects\study\devops\run-devops\Shopping
+      dockerfile: Chopping.API/Dockerfile
+    container_name: choppingapi
+    depends_on:
+      shopping.db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DatabaseSettings:ConnectionString: mongodb://shoppingdb:27017
+    image: choppingapi
+    ports:
+    - published: 8000
+      target: 80
+  shopping.client:
+    build:
+      context: C:\Projects\study\devops\run-devops\Shopping
+      dockerfile: Shopping.Client/Dockerfile
+    container_name: shoppingclient
+    depends_on:
+      chopping.api:
+        condition: service_started
+      shopping.db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ShoppingAPIUrl: http://choppingapi
+    image: shoppingclient
+    ports:
+    - published: 8001
+      target: 80
+  shopping.db:
+    container_name: shoppingdb
+    image: mongo
+    ports:
+    - published: 27017
+      target: 27017
+    restart: always
+    volumes:
+    - /site:/data/db:rw
+version: '3.4'
