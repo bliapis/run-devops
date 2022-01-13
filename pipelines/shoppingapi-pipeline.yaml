@@ -3,11 +3,11 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-  branches:
-    include:
+    branches:
+      include:
       - main
-  patchs:
-    include:
+    patchs:
+      include:
       - Shopping/Chopping.API/*
       - aks/shoppingapi.yaml
 
