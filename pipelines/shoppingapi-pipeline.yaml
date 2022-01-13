@@ -5,7 +5,7 @@
 trigger:
   branches:
     include:
-      -main
+      - main
   patchs:
     include:
       - Shopping/Chopping.API/*
