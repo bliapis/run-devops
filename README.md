@@ -1,7 +1,8 @@
 # run-devops
 
-Client microservice [![Build Status](https://dev.azure.com/liapisbpro2/shopping/_apis/build/status/ShoppingClient-Pipeline?branchName=main)](https://dev.azure.com/liapisbpro2/shopping/_build/latest?definitionId=4&branchName=main)
-API microservice [![Build Status](https://dev.azure.com/liapisbpro2/shopping/_apis/build/status/ShoppingAPI-Pipeline?branchName=main)](https://dev.azure.com/liapisbpro2/shopping/_build/latest?definitionId=3&branchName=main)
+Client microservice => [![Build Status](https://dev.azure.com/liapisbpro2/shopping/_apis/build/status/ShoppingClient-Pipeline?branchName=main)](https://dev.azure.com/liapisbpro2/shopping/_build/latest?definitionId=4&branchName=main)
+
+API microservice => [![Build Status](https://dev.azure.com/liapisbpro2/shopping/_apis/build/status/ShoppingAPI-Pipeline?branchName=main)](https://dev.azure.com/liapisbpro2/shopping/_build/latest?definitionId=3&branchName=main)
 
 This is a project that aims to study Azure DevOps, it contains 2 .Net C# applications with MongoDB that is used as 2 microservices, which are Client and API.
 
