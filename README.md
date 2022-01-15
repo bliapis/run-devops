@@ -22,7 +22,7 @@ The main technologies and tools used are:
   - Helm
   - Jenkins
   - microservices using Kafka
-  - More complex microservices archtecture: DDD, CQRS, others.
+  - More complex microservices architecture: DDD, CQRS, others.
   - Many data storage technologies: MSSQL Server, MongDB, Cassandra and Redis (cache).
   - Test projects (Unit and Integration Tests)
   - Many clients with many front-end technologies contacting the API`s: WPF, Blazor, React and Angular.
