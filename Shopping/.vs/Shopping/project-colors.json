@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1354cc20-5abb-4dcc-8b43-9641346d8ff9": {
+      "ProjectGuid": "1354cc20-5abb-4dcc-8b43-9641346d8ff9",
+      "DisplayName": "Chopping.API",
+      "ColorIndex": 0
+    },
+    "e3a23d41-e11b-41ff-9c9b-c19fd2c2100e": {
+      "ProjectGuid": "e3a23d41-e11b-41ff-9c9b-c19fd2c2100e",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

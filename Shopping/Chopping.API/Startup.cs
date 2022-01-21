@@ -1,3 +1,4 @@
+using Chopping.API.Configs.Silverback;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,12 @@ namespace Chopping.API
             });
 
             services.AddScoped<ProductContext>();
+
+            services
+                .AddSilverback()
+                .WithConnectionToMessageBroker(options => options
+                    .AddKafka())
+                .AddEndpointsConfigurator<ShoppingEndpointsConfigurator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,4 @@
-version: '3.4'
-
+version: '3.7'
 services:
   chopping.api:
     container_name: choppingapi
@@ -21,11 +20,51 @@ services:
       - chopping.api
     ports:
       - "8001:80"
-
+  
   shopping.db:
     container_name: shoppingdb
     restart: always
     ports:
       - "27017:27017"
     volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
       - ${WEBAPP_STORAGE_HOME}/site:/data/db
+
+  zookeeper:
+    container_name: zookeeper
+    image: confluentinc/cp-zookeeper:latest
+    networks:
+      - net
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+    ports:
+      - "2181:2181"
+    volumes: 
+      - ./zoo/data:/var/lib/zookeeper/data
+      - ./zoo/log:/var/lib/zookeeper/log
+
+  kafka:
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    image: confluentinc/cp-kafka:latest
+    networks:
+      - net
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_NUM_PARTITIONS: 3
+      CONFLUENT_SUPPORT_METRICS_ENABLE: 0
+    ports:
+      - "9092:9092"
+    volumes: 
+      - ./broker/data:/var/lib/kafka/data
+      
+networks:
+  net:
+    driver: bridge
